@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/alanshaw/it-ws/compare/v6.0.0...v6.0.1) (2023-04-18)
+
+
+### Bug Fixes
+
+* update server.js import override ([#62](https://github.com/alanshaw/it-ws/issues/62)) ([150e7a2](https://github.com/alanshaw/it-ws/commit/150e7a2e77f3206fc19521dc67d400f00b3d6483)), closes [#20](https://github.com/alanshaw/it-ws/issues/20)
+
 ## [6.0.0](https://github.com/alanshaw/it-ws/compare/v5.0.6...v6.0.0) (2023-04-18)
 
 
