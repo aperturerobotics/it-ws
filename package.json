@@ -166,6 +166,7 @@
     ]
   },
   "scripts": {
+    "clean": "aegir clean",
     "lint": "aegir lint",
     "dep-check": "aegir dep-check",
     "build": "aegir build",
@@ -188,7 +189,7 @@
   },
   "devDependencies": {
     "@types/ws": "^8.2.2",
-    "aegir": "^38.1.8",
+    "aegir": "^40.0.0",
     "delay": "^5.0.0",
     "it-all": "^3.0.1",
     "it-drain": "^3.0.1",
