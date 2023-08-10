@@ -1,3 +1,10 @@
+## [6.0.4](https://github.com/alanshaw/it-ws/compare/v6.0.3...v6.0.4) (2023-08-10)
+
+
+### Dependencies
+
+* **dev:** bump delay from 5.0.0 to 6.0.0 ([#69](https://github.com/alanshaw/it-ws/issues/69)) ([a5b1437](https://github.com/alanshaw/it-ws/commit/a5b14377053c2ba14a1c3611c989e9191920afda))
+
 ## [6.0.3](https://github.com/alanshaw/it-ws/compare/v6.0.2...v6.0.3) (2023-08-10)
 
 
