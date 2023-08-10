@@ -1,3 +1,10 @@
+## [6.0.5](https://github.com/alanshaw/it-ws/compare/v6.0.4...v6.0.5) (2023-08-10)
+
+
+### Dependencies
+
+* add @types/ws to dependencies to ensure types for the version of ws are compatible ([#71](https://github.com/alanshaw/it-ws/issues/71)) ([80092e8](https://github.com/alanshaw/it-ws/commit/80092e805c3ba3e2edd67191be5c6f07446d9cfb))
+
 ## [6.0.4](https://github.com/alanshaw/it-ws/compare/v6.0.3...v6.0.4) (2023-08-10)
 
 
