@@ -3,6 +3,7 @@ import drain from 'it-drain'
 import { pipe } from 'it-pipe'
 import defer from 'p-defer'
 import { fromString as uint8ArrayFromString } from 'uint8arrays/from-string'
+import { isNode } from 'wherearewe'
 import * as WS from '../src/index.js'
 import WebSocket from '../src/web-socket.js'
 
@@ -50,18 +51,36 @@ describe('error', () => {
     expect(sinkError.message).to.equal(sourceError.message)
   })
 
-  it('test connection error awaiting connected', async () => {
-    await expect(
-      WS.duplex(new WebSocket(`ws://localhost:34897/${Math.random()}`)).connected()
-    ).to.eventually.be.rejected.with.property('message').that.matches(/ECONNREFUSED/g)
-  })
+  // ws under node throws AggregateErrors
+  if (isNode) {
+    it('test connection error awaiting connected', async () => {
+      await expect(
+        WS.duplex(new WebSocket(`ws://localhost:34897/${Math.random()}`)).connected()
+      ).to.eventually.be.rejected.with.nested.property('errors[0].message').that.matches(/ECONNREFUSED/g)
+    })
 
-  it('test connection error in stream', async function () {
-    await expect(
-      pipe(
-        WS.duplex(new WebSocket(`ws://localhost:34897/${Math.random()}`)).source,
-        drain
-      )
-    ).to.eventually.be.rejected.with.property('message').that.matches(/ECONNREFUSED/g)
-  })
+    it('test connection error in stream', async function () {
+      await expect(
+        pipe(
+          WS.duplex(new WebSocket(`ws://localhost:34897/${Math.random()}`)).source,
+          drain
+        )
+      ).to.eventually.be.rejected.with.nested.property('errors[0].message').that.matches(/ECONNREFUSED/g)
+    })
+  } else {
+    it('test connection error awaiting connected', async () => {
+      await expect(
+        WS.duplex(new WebSocket(`ws://localhost:34897/${Math.random()}`)).connected()
+      ).to.eventually.be.rejected.with.property('message').that.matches(/ECONNREFUSED/g)
+    })
+
+    it('test connection error in stream', async function () {
+      await expect(
+        pipe(
+          WS.duplex(new WebSocket(`ws://localhost:34897/${Math.random()}`)).source,
+          drain
+        )
+      ).to.eventually.be.rejected.with.property('message').that.matches(/ECONNREFUSED/g)
+    })
+  }
 })
