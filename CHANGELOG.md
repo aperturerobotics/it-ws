@@ -1,3 +1,16 @@
+## [6.1.0](https://github.com/alanshaw/it-ws/compare/v6.0.5...v6.1.0) (2023-12-10)
+
+
+### Features
+
+* support react-native ([#97](https://github.com/alanshaw/it-ws/issues/97)) ([440af16](https://github.com/alanshaw/it-ws/commit/440af169944d9c703757d548522c25cc4c9502ac))
+
+
+### Trivial Changes
+
+* add or force update .github/workflows/js-test-and-release.yml ([#77](https://github.com/alanshaw/it-ws/issues/77)) ([96f4c7b](https://github.com/alanshaw/it-ws/commit/96f4c7b032123a23a94a54da8b74251c1db3b3ee))
+* delete templates [skip ci] ([#76](https://github.com/alanshaw/it-ws/issues/76)) ([e8b6c1f](https://github.com/alanshaw/it-ws/commit/e8b6c1f4dc9cfb86afe007bd4c0ae3a1b40393e5))
+
 ## [6.0.5](https://github.com/alanshaw/it-ws/compare/v6.0.4...v6.0.5) (2023-08-10)
 
 
