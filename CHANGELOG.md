@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/alanshaw/it-ws/compare/v6.1.0...v6.1.1) (2023-12-11)
+
+
+### Dependencies
+
+* bump uint8arrays from 4.0.10 to 5.0.0 ([#96](https://github.com/alanshaw/it-ws/issues/96)) ([df1e824](https://github.com/alanshaw/it-ws/commit/df1e824e84b197f47c6ecbf943820cb6fe281388))
+
 ## [6.1.0](https://github.com/alanshaw/it-ws/compare/v6.0.5...v6.1.0) (2023-12-10)
 
 
