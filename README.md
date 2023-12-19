@@ -5,6 +5,14 @@
 
 > Simple async iterables for websocket client connections
 
+## Notice: Fork
+
+**This is a maintenance fork of it-ws. It primarily exports a few more things than the main package.**
+
+See: https://github.com/alanshaw/it-ws/issues/78
+
+This package is published at `@aptre/it-ws`.
+
 ## Table of contents <!-- omit in toc -->
 
 - [Install](#install)
