@@ -10,12 +10,6 @@ import wsurl from './helpers/wsurl.js'
 
 const endpoint = wsurl + '/echo'
 
-    async function* arrayToAsyncGenerator(array: Uint8Array[]): AsyncGenerator<Uint8Array> {
-      for (const item of array) {
-        yield item;
-      }
-    }
-
 describe('echo', () => {
   it('setup echo reading and writing', async () => {
     const socket = new WebSocket(endpoint)
@@ -84,7 +78,9 @@ describe('echo', () => {
     await pipe(
       pws,
       goodbye({
-        source: arrayToAsyncGenerator(expected),
+        source: (async function * () {
+          yield * expected
+        }()),
         sink: async source => {
           await pipe(
             source,

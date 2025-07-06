@@ -1,3 +1,29 @@
+## [6.1.5](https://github.com/alanshaw/it-ws/compare/v6.1.4...v6.1.5) (2024-07-30)
+
+### Bug Fixes
+
+* allow addr to be `null` ([#119](https://github.com/alanshaw/it-ws/issues/119)) ([9881c23](https://github.com/alanshaw/it-ws/commit/9881c231fa8c7ae428fc732064e890b14cf8375f))
+
+## [6.1.4](https://github.com/alanshaw/it-ws/compare/v6.1.3...v6.1.4) (2024-07-29)
+
+### Bug Fixes
+
+* handle null server address ([#118](https://github.com/alanshaw/it-ws/issues/118)) ([bb8e804](https://github.com/alanshaw/it-ws/commit/bb8e804b84ae0a3fd18d51a1edb677eb3be18c4e)), closes [#114](https://github.com/alanshaw/it-ws/issues/114)
+
+## [6.1.3](https://github.com/alanshaw/it-ws/compare/v6.1.2...v6.1.3) (2024-07-24)
+
+### Dependencies
+
+* **dev:** bump aegir from 40.0.13 to 44.0.1 ([#117](https://github.com/alanshaw/it-ws/issues/117)) ([2fd31de](https://github.com/alanshaw/it-ws/commit/2fd31de1b58a3d97456f3e001c4c95d4a748899e))
+
+## [6.1.2](https://github.com/alanshaw/it-ws/compare/v6.1.1...v6.1.2) (2024-07-22)
+
+
+### Bug Fixes
+
+* export web-socket ([#99](https://github.com/alanshaw/it-ws/issues/99)) ([9687a51](https://github.com/alanshaw/it-ws/commit/9687a514377724642818227912f264aa53578ee6))
+* it-goodbye expects the source to be an async generator ([#115](https://github.com/alanshaw/it-ws/issues/115)) ([d00509c](https://github.com/alanshaw/it-ws/commit/d00509c616415ae02fe4bf36a172688afbdf9fe7))
+
 ## [6.1.1](https://github.com/alanshaw/it-ws/compare/v6.1.0...v6.1.1) (2023-12-11)
 
 

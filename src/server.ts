@@ -11,13 +11,13 @@ export interface ServerOptions {
   cert?: string
   server?: http.Server | https.Server
   verifyClient?: VerifyClientCallbackAsync | VerifyClientCallbackSync
-  onConnection?: (connection: DuplexWebSocket) => void
+  onConnection?(connection: DuplexWebSocket): void
 }
 
 export interface WebSocketServer extends EventEmitter {
-  listen: (addrInfo: { port: number } | number) => Promise<WebSocketServer>
-  close: () => Promise<void>
-  address: () => string | AddressInfo | null
+  listen(addrInfo: { port: number } | number): Promise<WebSocketServer>
+  close(): Promise<void>
+  address(): string | AddressInfo | null
 }
 
 class Server extends EventEmitter {
@@ -61,15 +61,25 @@ class Server extends EventEmitter {
   }
 
   onWsServerConnection (socket: WebSocket, req: http.IncomingMessage): void {
-    const addr = this.wsServer.address()
+    let addr: string | AddressInfo | null
 
-    if (typeof addr === 'string') {
-      this.emit('error', new Error('Cannot listen on unix sockets'))
-      return
-    }
+    try {
+      if (req.socket.remoteAddress == null || req.socket.remotePort == null) {
+        throw new Error('Remote connection did not have address and/or port')
+      }
 
-    if (req.socket.remoteAddress == null || req.socket.remotePort == null) {
-      this.emit('error', new Error('Remote connection did not have address and/or port'))
+      addr = this.wsServer.address()
+
+      if (typeof addr === 'string') {
+        throw new Error('Cannot listen on unix sockets')
+      }
+
+      if (addr == null) {
+        throw new Error('Server was closing or not running')
+      }
+    } catch (err: any) {
+      req.destroy(err)
+      this.emit('error', err)
       return
     }
 
