@@ -1,15 +1,10 @@
 # it-ws <!-- omit in toc -->
 
-[![codecov](https://img.shields.io/codecov/c/github/alanshaw/it-ws.svg?style=flat-square)](https://codecov.io/gh/alanshaw/it-ws)
-[![CI](https://img.shields.io/github/actions/workflow/status/alanshaw/it-ws/js-test-and-release.yml?branch=master\&style=flat-square)](https://github.com/alanshaw/it-ws/actions/workflows/js-test-and-release.yml?query=branch%3Amaster)
-
 > Simple async iterables for websocket client connections
 
 ## Notice: Fork
 
-**This is a maintenance fork of it-ws. It primarily exports a few more things than the main package.**
-
-See: https://github.com/alanshaw/it-ws/issues/78
+**This is a maintenance fork of it-ws. It minimizes dependencies when compared to the upstream package.**
 
 This package is published at `@aptre/it-ws`.
 
@@ -35,15 +30,7 @@ This package is published at `@aptre/it-ws`.
 ## Install
 
 ```console
-$ npm i it-ws
-```
-
-### Browser `<script>` tag
-
-Loading this module through a script tag will make it's exports available as `ItWs` in the global namespace.
-
-```html
-<script src="https://unpkg.com/it-ws/dist/index.min.js"></script>
+$ npm i @aptre/it-ws
 ```
 
 ## Usage
@@ -51,7 +38,7 @@ Loading this module through a script tag will make it's exports available as `It
 ### Example - client
 
 ```js
-import { connect } from 'it-ws/client'
+import { connect } from '@aptre/it-ws/client'
 import { pipe } from 'it-pipe'
 
 const stream = connect(WS_URL)
@@ -64,7 +51,7 @@ pipe(source, stream, sink)
 ### Example - server
 
 ```js
-import { createServer } from 'it-ws/server'
+import { createServer } from '@aptre/it-ws/server'
 import { pipe } from 'it-pipe'
 
 const server = createServer(stream => {
@@ -78,7 +65,7 @@ await server.listen(PORT)
 
 ## API
 
-### `import { connect } from 'it-ws/client'`
+### `import { connect } from '@aptre/it-ws/client'`
 
 `connect(url, { binary: boolean })`
 
@@ -93,7 +80,7 @@ const stream = connect(url)
 // https://gist.github.com/alanshaw/591dc7dd54e4f99338a347ef568d6ee9#duplex-it
 ```
 
-### `import { createServer } from 'it-ws/server'`
+### `import { createServer } from '@aptre/it-ws/server'`
 
 Create async iterable websocket servers.
 
@@ -108,8 +95,8 @@ Create async iterable websocket servers.
 One duplex service you may want to use this with is [muxrpc](https://github.com/dominictarr/muxrpc)
 
 ```js
-import { createServer } from 'it-ws/server'
-import { connect } from 'it-ws/client'
+import { createServer } from '@aptre/it-ws/server'
+import { connect } from '@aptre/it-ws/client'
 import { pipe } from 'it-pipe'
 
 createServer({
@@ -189,7 +176,7 @@ these modules are used internally, to wrap a websocket.
 you probably won't need to touch these,
 but they are documented anyway.
 
-### `import duplex from 'it-ws/duplex'`
+### `import duplex from '@aptre/it-ws/duplex'`
 
 turn a websocket into a duplex stream.
 If provided, `opts` is passed to `sink(socket, opts)`.
@@ -206,9 +193,9 @@ The duplex stream will also contain a copy of the properties from
 the http request that became the websocket. they are `method`, `url`,
 `headers` and `upgrade`.
 
-also exposed at: `import { duplex } from 'it-ws'`
+also exposed at: `import { duplex } from '@aptre/it-ws'`
 
-### `import sink from 'it-ws/sink'`
+### `import sink from '@aptre/it-ws/sink'`
 
 Create a `Sink` that will write data to the `socket`.
 `opts` may be `{closeOnEnd: true, onClose: onClose}`.
@@ -219,7 +206,7 @@ the stream will not close, it will just stop emitting data.
 If `opts` is a function, then `onClose = opts; opts.closeOnEnd = true`.
 
 ```js
-import sink from 'it-ws/sink'
+import sink from '@aptre/it-ws/sink'
 import { pipe } from 'it-pipe'
 import each from 'it-foreach'
 import delay from 'delay'
@@ -244,30 +231,29 @@ socket.addEventListener('message', function(evt) {
 });
 ```
 
-also exposed at `import { sink } from 'it-ws'`
+also exposed at `import { sink } from '@aptre/it-ws'`
 
-### `import source from 'it-ws/source'`
+### `import source from '@aptre/it-ws/source'`
 
 Create a `Source` that will read data from the `socket`.
 
 ```js
 import { pipe } from 'it-pipe'
-import source from 'it-ws/source'
-import { toString } from 'uint8arrays/to-string'
+import source from '@aptre/it-ws/source'
 
 pipe(
   // connect to the test/server.js endpoint
   source(new WebSocket('ws://localhost:3000/read')),
   async (source) => {
     for await (const buf of source) {
-      console.info(toString(buf))
+      console.info(buf)
     }
   }
 );
 
 ```
 
-also exposed at `import { source } from 'it-ws'`
+also exposed at `import { source } from '@aptre/it-ws'`
 
 ## License
 

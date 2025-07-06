@@ -1,5 +1,4 @@
 import { EventIterator } from 'event-iterator'
-import { fromString as uint8ArrayFromString } from 'uint8arrays/from-string'
 import type { WebSocket, ErrorEvent, MessageEvent } from 'ws'
 
 // copied from github.com/feross/buffer
@@ -48,7 +47,7 @@ export default (socket: WebSocket): ConnectedSource => {
           let data: Uint8Array | null = null
 
           if (typeof event.data === 'string') {
-            data = uint8ArrayFromString(event.data)
+            throw new Error(`Unsupported string encoding`)
           }
 
           if (isArrayBuffer(event.data)) {

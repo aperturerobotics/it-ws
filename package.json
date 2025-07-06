@@ -193,7 +193,6 @@
     "@types/ws": "^8.2.2",
     "event-iterator": "^2.0.0",
     "it-stream-types": "^2.0.1",
-    "uint8arrays": "^5.1.0",
     "ws": "^8.17.1"
   },
   "devDependencies": {
@@ -207,6 +206,7 @@
     "it-ndjson": "^1.0.7",
     "it-pipe": "^3.0.1",
     "p-defer": "^4.0.1",
+    "uint8arrays": "^5.1.0",
     "wherearewe": "^2.0.1",
     "wsurl": "^1.0.0"
   },
