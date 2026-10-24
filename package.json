@@ -200,7 +200,7 @@
     "ws": "^8.17.1"
   },
   "devDependencies": {
-    "aegir": "^48.0.0",
+    "aegir": "^44.0.1",
     "delay": "^7.0.0",
     "it-all": "^3.0.6",
     "it-drain": "^3.0.7",
