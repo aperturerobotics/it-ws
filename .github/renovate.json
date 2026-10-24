@@ -1,17 +1,35 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": [":semanticPrefixFixDepsChoreOthers", ":ignoreModulesAndTests", "group:all", "workarounds:all"],
-    "forkProcessing": "enabled",
-    "branchConcurrentLimit": 0,
-    "packageRules": [
-        {
-            "matchManagers": ["gomod"],
-            "matchDepTypes": ["replace"],
-            "enabled": false
-        },
-        {
-            "matchPackageNames": ["eslint"],
-            "allowedVersions": "<9.0.0"
-        }
-    ]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    ":semanticPrefixFixDepsChoreOthers",
+    ":ignoreModulesAndTests",
+    "group:all",
+    "workarounds:all"
+  ],
+  "forkProcessing": "enabled",
+  "branchConcurrentLimit": 0,
+  "packageRules": [
+    {
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchDepTypes": [
+        "replace"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "eslint"
+      ],
+      "allowedVersions": "<9.0.0"
+    },
+    {
+      "description": "aegir 45 and later run the TypeScript test sources directly, which these tests do not support yet",
+      "matchPackageNames": [
+        "aegir"
+      ],
+      "allowedVersions": "<45"
+    }
+  ]
 }
